@@ -12,9 +12,6 @@ const app = () => {
   const timeDisplay = document.querySelector(".time-display");
   const timeSelect = document.querySelectorAll(".time-select button");
 
-  //get the outline length of the circle
-  const outlineLength = outline.getTotalLength();
-
   //Duraton
   let duration = 300;
 
@@ -22,13 +19,11 @@ const app = () => {
   timeSelect.forEach((option) => {
     option.addEventListener("click", function () {
       duration = this.getAttribute("data-time");
-      timeDisplay.textContent = `${Math.floor(duration / 60)}:${Math.floor(
-        duration % 60
-      )}`;
+      timeDisplay.textContent = `${Math.floor(duration / 60)}:${Math.floor(duration % 60)}`;
     });
   });
 
-  //picking diff sound
+  //picking different sound
   sounds.forEach((sound) => {
     sound.addEventListener("click", function () {
       song.src = this.getAttribute("data-sound");
@@ -55,7 +50,10 @@ const app = () => {
     }
   };
 
-  //circle animation essentials like overlay(strokeDashoffset allows us to show the blue section of circle)
+  //get the outline length of the circle
+  const outlineLength = outline.getTotalLength();
+  
+  //circle animation essentials like overlay (strokeDashoffset allows us to show the blue section of circle)
   outline.style.strokeDasharray = outlineLength;
   outline.style.strokeDashoffset = outlineLength;
 
